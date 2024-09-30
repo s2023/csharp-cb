@@ -7,14 +7,9 @@ namespace GradeBook.Console
     {
         public GradeBookModel(string name = "There is no name")
         {
-            //Name = name;
             _name = name;
             _grades = new List<float>();
         }
-        //public GradeBookModel()
-        //    : this("No name")
-        //{
-        //}
 
         public void AddGrade(float grade)
         {
@@ -74,7 +69,6 @@ namespace GradeBook.Console
             get
             {
                 return _name;
-                //return _name.ToUpper();
             }
             set
             {
@@ -82,7 +76,6 @@ namespace GradeBook.Console
                 {
                     throw new ArgumentException("Name can't be null or empty.");
                 }
-                //if (!String.IsNullOrEmpty(value))
                 if (_name != value)
                 {
                     var oldValue = _name;
@@ -100,7 +93,6 @@ namespace GradeBook.Console
         }
 
         public event NameChangedDelegate NameChanged;
-        //public NamedChangedDelegate NamedChanged;
 
         private List<float> _grades;
 

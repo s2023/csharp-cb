@@ -42,12 +42,11 @@ namespace GradeBook.Console
             }
         }
 
-    public char LetterGrade
+        public char LetterGrade
         {
             get
             {
                 char result;
-                //string result;
                 if (AverageGrade >= 90)
                 {
                     result = 'A';
