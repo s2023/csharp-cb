@@ -36,15 +36,10 @@ catch (UnauthorizedAccessException ex)
 foreach (float grade in book)
 {
     Console.WriteLine(grade);
-
 }
-//book.DoSomething();
-//book.WriteGrades(Console.Out);
 
 try
 {
-    //Console.WriteLine("Please enter a name for the book:");
-    //book.Name = Console.ReadLine();
 }
 catch (ArgumentException ex)
 {
@@ -52,12 +47,9 @@ catch (ArgumentException ex)
 }
 
 static IGradeTracker CreateGradebook()
-//v1 static GradeTracker CreateGradebook()
 {
     GradeTracker book = new ThrowAwayGradeBook("Tony's Book");
-    //v1 GradeBookModel book = new ThrowAwayGradeBook("Tony's Book");
     return book;
-    //v0 return new ThrowAwayGradeBook("Tony's Book");
 }
 
 GradeStatistics stats = book.ComputeStatistics();

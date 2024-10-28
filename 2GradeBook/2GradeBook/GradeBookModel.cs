@@ -25,7 +25,6 @@ namespace GradeBook.ConsoleApp
         }
 
         public override void AddGrade(float grade)
-        //v1 public void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
@@ -33,11 +32,7 @@ namespace GradeBook.ConsoleApp
             }
         }
 
-        //public bool ThrowAwayLowest { get; set; } v1
-
         public override GradeStatistics ComputeStatistics()
-        //v1 public virtual GradeStatistics ComputeStatistics()
-        //public GradeStatistics ComputeStatistics()
         {
             Console.WriteLine("GradebookCompSts Compute");
             GradeStatistics stats = new GradeStatistics();
@@ -49,13 +44,11 @@ namespace GradeBook.ConsoleApp
                 stats.LowestGrade = Math.Min(grade, stats.LowestGrade);
                 sum += grade;
             }
-            //if (ThrowAwayLowest); v1
             stats.AverageGrade = sum / _grades.Count;
             return stats;
         }
 
         public override void WriteGrades(TextWriter textWriter)
-        //v1 public void WriteGrades(TextWriter textWriter)
         {
             textWriter.WriteLine("Grades:");
             int i = 0;
@@ -64,25 +57,8 @@ namespace GradeBook.ConsoleApp
                 textWriter.WriteLine(_grades[i]);
                 i++;
             } while (i < _grades.Count);
-            //while (true)
-            ////while (i < _grades.Count)
-            //{
-            //    textWriter.WriteLine(_grades[i]);
-            //    i++;
-            //}
-            //for (int i = _grades.Count - 1; i >= 0; i++)
-            ////for (int i = 0; i < _grades.Count; i++)
-            //{
-            //    textWriter.WriteLine(_grades[i]);
-            //}
-            //foreach (float grade in _grades)
-            //{
-            //    textWriter.WriteLine(grade);
-            //}
             textWriter.WriteLine("***************");
         }
-
-        // v1 lo que se corta a GradeTracker
 
         protected List<float> _grades;
 

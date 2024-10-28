@@ -10,10 +10,8 @@ namespace GradeBook.ConsoleApp
     {
         public ThrowAwayGradeBook(string name)
             :base(name)
-            //:this()
         {
             Console.WriteLine("throwaway ctor");
-            //Name = name;
         }
 
         public override void DoSomething()
@@ -21,7 +19,6 @@ namespace GradeBook.ConsoleApp
         }
 
         public override GradeStatistics ComputeStatistics()
-        //public GradeStatistics ComputeStatistics()
         {
             Console.WriteLine("throwaway Compute");
             float lowest = float.MaxValue;
