@@ -1,4 +1,4 @@
-using GradeBook.Console;
+using GradeBook.ConsoleApp;
 
 namespace GradeBook.Tests
 {

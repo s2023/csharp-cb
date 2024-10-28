@@ -1,17 +1,31 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
-namespace GradeBook.Console
+
+namespace GradeBook.ConsoleApp
 {
-    public class GradeBookModel
+    public class GradeBookModel : GradeTracker
     {
         public GradeBookModel(string name = "There is no name")
         {
-            _name = name;
+            Console.WriteLine("gradebookm ctor");
+            Name = name;
             _grades = new List<float>();
         }
 
-        public void AddGrade(float grade)
+        public override IEnumerator GetEnumerator()
+        {
+            return _grades.GetEnumerator();
+        }
+
+        public override void DoSomething()
+        {
+
+        }
+
+        public override void AddGrade(float grade)
+        //v1 public void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
@@ -19,23 +33,29 @@ namespace GradeBook.Console
             }
         }
 
-        public GradeStatistics ComputeStatistics()
-        {
-            GradeStatistics stats = new GradeStatistics();
-            float sum = 0f;
+        //public bool ThrowAwayLowest { get; set; } v1
 
+        public override GradeStatistics ComputeStatistics()
+        //v1 public virtual GradeStatistics ComputeStatistics()
+        //public GradeStatistics ComputeStatistics()
+        {
+            Console.WriteLine("GradebookCompSts Compute");
+            GradeStatistics stats = new GradeStatistics();
+
+            float sum = 0f;
             foreach (float grade in _grades) 
             {
                 stats.HighestGrade = Math.Max(grade, stats.HighestGrade);
                 stats.LowestGrade = Math.Min(grade, stats.LowestGrade);
                 sum += grade;
             }
-
+            //if (ThrowAwayLowest); v1
             stats.AverageGrade = sum / _grades.Count;
             return stats;
         }
 
-        public void WriteGrades(TextWriter textWriter)
+        public override void WriteGrades(TextWriter textWriter)
+        //v1 public void WriteGrades(TextWriter textWriter)
         {
             textWriter.WriteLine("Grades:");
             int i = 0;
@@ -62,39 +82,9 @@ namespace GradeBook.Console
             textWriter.WriteLine("***************");
         }
 
-        private string _name;
+        // v1 lo que se corta a GradeTracker
 
-        public string Name
-        {   
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                if (String.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException("Name can't be null or empty.");
-                }
-                if (_name != value)
-                {
-                    var oldValue = _name;
-                    _name = value;
-                    if (NameChanged != null)
-                    {
-                        NameChangedEventArgs args = new NameChangedEventArgs();
-                        args.OldValue = oldValue;
-                        args.NewValue = value;
-                        NameChanged(this, args);
-                                               
-                    }
-                }
-            }
-        }
-
-        public event NameChangedDelegate NameChanged;
-
-        private List<float> _grades;
+        protected List<float> _grades;
 
     }
 }

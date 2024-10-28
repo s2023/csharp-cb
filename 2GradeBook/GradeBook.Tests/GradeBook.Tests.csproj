@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\2GradeBook\GradeBook.Console.csproj" />
+    <ProjectReference Include="..\2GradeBook\GradeBook.ConsoleApp.csproj" />
   </ItemGroup>
 
   <ItemGroup>
